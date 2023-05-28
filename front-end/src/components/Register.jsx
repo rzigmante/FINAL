@@ -25,7 +25,7 @@ export const Register = () => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    // POST request i "http://localhost:5000........"
+
     axios
       .post("http://localhost:8000/register", formData)
       .then((response) => {
@@ -50,27 +50,27 @@ export const Register = () => {
       <MainBox>
         <StyledHeader>
           <h2>
-            <b>Have your account registered</b>
+            <b>Užregistruokite savo paskyrą</b>
           </h2>
-          <p>Please enter your details to register</p>
+          <p>Įveskite detales, kad būtumėte užregistruotas</p>
         </StyledHeader>
         <StyledForm onSubmit={onHandleSubmit}>
           <StyledInput
             name="name"
             type="text"
-            placeholder="Name"
+            placeholder="Vardas"
             onChange={handleOnChange}
           />
           <StyledInput
             name="surname"
             type="text"
-            placeholder="Surname"
+            placeholder="Pavardė"
             onChange={handleOnChange}
           />
           <StyledInput
             name="email"
             type="email"
-            placeholder="youremail@gmail.com"
+            placeholder="jūsųelpaštas@gmail.com"
             onChange={handleOnChange}
           />
           <StyledInput
@@ -79,11 +79,11 @@ export const Register = () => {
             placeholder="*********"
             onChange={handleOnChange}
           />
-          <StyledButton className="btn">REGISTER</StyledButton>
+          <StyledButton className="btn">UŽSIREGISTRUOTI</StyledButton>
         </StyledForm>
       </MainBox>
       <p>
-        Already have an account? <Link to="/login">Login HERE</Link>
+        Jau turite paskyrą? <Link to="/login">Prisijunkite ČIA</Link>
       </p>
     </LoginContainer>
   );

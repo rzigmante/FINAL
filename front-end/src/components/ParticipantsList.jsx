@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const ClientList = () => {
-  const [clients, setClients] = useState(null);
+export const ParticipantsList = () => {
+  const [participants, setParticipants] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/clients")
+      .get("http://localhost:8000/participants")
       .then((response) => {
-        setClients(response.data);
+        setParticipants(response.data);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
@@ -20,7 +20,7 @@ export const ClientList = () => {
   const deleteHandler = (id) => {
     console.log("id", id);
     axios
-      .delete(`http://localhost:5000/clients/${id}`)
+      .delete(`http://localhost:8000/participants/${id}`)
       .then((res) => {
         console.log("deleted", res);
         navigate("/list");
@@ -36,7 +36,7 @@ export const ClientList = () => {
 
   return (
     <>
-      <h2 className="clients-list">Dalyvių sąrašas</h2>
+      <h2 className="participants-list">Dalyvių sąrašas</h2>
       <table>
         <tr>
           <th>Vardas</th>
@@ -45,19 +45,19 @@ export const ClientList = () => {
           <th>Telefono nr.</th>
           <th>Ištrinti</th>
         </tr>
-        {clients.map((client) => {
-          console.log("post", client);
+        {participants.map((participants) => {
+          console.log("post", participants);
           return (
             <>
               <tr>
-                <td>{client.name}</td>
-                <td>{client.surname}</td>
-                <td>{client.email}</td>
-                <td>{client.phone}</td>
+                <td>{participants.name}</td>
+                <td>{participants.surname}</td>
+                <td>{participants.email}</td>
+                <td>{participants.phone}</td>
                 <td>
                   <button
                     className="form-btn"
-                    onClick={() => deleteHandler(client.id)}
+                    onClick={() => deleteHandler(participants.id)}
                   >
                     X
                   </button>

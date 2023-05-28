@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export const ClientForm = (props) => {
+export const ParticipantsForm = (props) => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ export const ClientForm = (props) => {
     };
 
     axios
-      .post("http://localhost:5000/clients", body)
+      .post("http://localhost:8000/participants", body)
       .then((response) => console.log("seccessful response", response))
       .catch((err) => console.log("err", err));
   };
@@ -27,34 +27,34 @@ export const ClientForm = (props) => {
     <div className="reg-form-container">
       <h2>Naujas dalyvis</h2>
       <form className="client_register-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">vardas:</label>
+        <label htmlFor="name">Vardas:</label>
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
           type="name"
-          placeholder="vardas"
+          placeholder="Vardas"
           id="name"
           name="name"
         />
-        <label htmlFor="surname">pavardė:</label>
+        <label htmlFor="surname">Pavardė:</label>
         <input
           value={surname}
           onChange={(e) => setSurname(e.target.value)}
           type="surname"
-          placeholder="pavardė"
+          placeholder="Pavardė"
           id="surname"
           name="surname"
         />
-        <label htmlFor="email">elektroninis paštas:</label>
+        <label htmlFor="email">Elektroninis paštas:</label>
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
-          placeholder="įrašykite el. pašto adresą"
+          placeholder="Įrašykite el. pašto adresą"
           id="email"
           name="email"
         />
-        <label htmlFor="phone">telefono numeris::</label>
+        <label htmlFor="phone">Telefono numeris:</label>
         <input
           value={phone}
           onChange={(e) => setPhone(e.target.value)}

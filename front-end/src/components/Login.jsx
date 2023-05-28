@@ -9,9 +9,9 @@ import {
   Error,
 } from "./styles/StyledLogin";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "./axios";
 import { useContext } from "react";
 import { AuthenticationContext } from "./AuthenticationContext";
+import axios from "axios";
 
 export const Login = () => {
   const { setIsSignedIn } = useContext(AuthenticationContext);
@@ -49,35 +49,38 @@ export const Login = () => {
 
   return (
     <>
-      <button onClick={() => navigate(-1)}>Go Back</button>
+      <button onClick={() => navigate(-1)}>Grįžti</button>
       <LoginContainer>
         <MainBox>
           <StyledHeader>
             <h2>
-              <b>Login to our site</b>
+              <b>Prisijunkite prie mūsų puslapio</b>
             </h2>
-            <p>Please enter email and password to login</p>
+            <p>
+              Įveskite savo el. pašto adresą ir slaptažodį norėdami prisijungti
+            </p>
           </StyledHeader>
           <StyledForm onSubmit={handleOnSubmit}>
             <StyledInput
               name="email"
               onChange={handleOnChange}
               type="email"
-              placeholder="youremail@gmail.com"
+              placeholder="jūsųelpaštas@gmail.com"
             />
             <StyledInput
               name="password"
               onChange={handleOnChange}
-              type="password"
+              type="slaptažodis"
               placeholder="*********"
             />
-            <StyledButton className="btn">LOGIN</StyledButton>
+            <StyledButton className="btn">PRISIJUNGTI</StyledButton>
 
             {error && <Error>{error}</Error>}
           </StyledForm>
         </MainBox>
         <p>
-          Don't have an account yet? <Link to="/register">Register HERE</Link>
+          Dar neturite paskyros?{" "}
+          <Link to="/register">Užsiregistruokite ČIA</Link>
         </p>
       </LoginContainer>
     </>

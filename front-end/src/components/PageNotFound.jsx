@@ -9,15 +9,15 @@ export const PageNotFound = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        color: "lightblue",
+        color: "darkgreen",
       }}
     >
       <img src={image} alt="sinking boat" />
-      <h2>Oooops, you're probably lost</h2>
+      <h2>Uuuuuups, tikriausiai pasiklydote</h2>
       <h4>
-        We're afraid there is nothing here. Please go back to our main page{" "}
-        <Link style={{ color: "lightblue" }} to="/">
-          HERE
+        Čia nieko nėra. Grįžkite į mūsų pagrindinį puslapį{" "}
+        <Link style={{ color: "darkgreen" }} to="/">
+          ČIA
         </Link>
       </h4>
     </div>

@@ -8,3 +8,5 @@ export const HomePage = () => {
 
   return <StyledHomePage>You're in the Homepage</StyledHomePage>;
 };
+
+export default HomePage;

@@ -18,25 +18,19 @@ export const NavBar = ({ isLoading, onLogout }) => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/products">Products</Link>
+              <Link to="/participants">Dalyvių sąrašas</Link>
             </li>
             <li>
-              <Link to="/posts">Posts</Link>
-            </li>
-            <li>
-              <Link to="/addProduct">Add new product</Link>
-            </li>
-            <li>
-              <Link to="/basket">My Basket</Link>
+              <Link to="/form">Registravimo forma</Link>
             </li>
           </>
         ) : (
           <>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login">Prisijunkite</Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>
+              <Link to="/register">Užsiregistruokite</Link>
             </li>
           </>
         )}
