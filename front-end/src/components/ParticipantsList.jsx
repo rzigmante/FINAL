@@ -1,11 +1,35 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {
+  MainBox,
+  StyledHeader,
+  LoginContainer,
+  StyledInput,
+  StyledButton,
+  StyledForm,
+  Error,
+} from "./styles/StyledLogin";
+import { ParticipantsForm } from "./ParticipantsForm";
 
 export const ParticipantsList = () => {
   const [participants, setParticipants] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
+
+  const handleDelete = (id) => {
+    console.log("id", id);
+    axios
+      .delete(`http://localhost:8000/participants/${id}`)
+      .then((res) => {
+        console.log("Ištrinta", res);
+        navigate("/list");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -17,56 +41,54 @@ export const ParticipantsList = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const deleteHandler = (id) => {
-    console.log("id", id);
-    axios
-      .delete(`http://localhost:8000/participants/${id}`)
-      .then((res) => {
-        console.log("deleted", res);
-        navigate("/list");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
     <>
-      <h2 className="participants-list">Dalyvių sąrašas</h2>
-      <table>
-        <tr>
-          <th>Vardas</th>
-          <th>Pavardė</th>
-          <th>El. paštas</th>
-          <th>Telefono nr.</th>
-          <th>Ištrinti</th>
-        </tr>
-        {participants.map((participants) => {
-          console.log("post", participants);
-          return (
-            <>
+      <LoginContainer>
+        <MainBox>
+          <StyledHeader>
+            <h2 className="participants-list">
+              Dalyvaujančių renginyje sąrašas
+            </h2>
+          </StyledHeader>
+          <StyledForm>
+            <table>
               <tr>
-                <td>{participants.name}</td>
-                <td>{participants.surname}</td>
-                <td>{participants.email}</td>
-                <td>{participants.phone}</td>
-                <td>
-                  <button
-                    className="form-btn"
-                    onClick={() => deleteHandler(participants.id)}
-                  >
-                    X
-                  </button>
-                </td>
+                <th>Vardas</th>
+                <th>Pavardė</th>
+                <th>El. paštas</th>
+                <th>Telefono nr.</th>
+                <th>Ištrinti</th>
               </tr>
-            </>
-          );
-        })}
-      </table>
+              {participants.map((participants) => {
+                console.log("post", participants);
+                return (
+                  <>
+                    <tr>
+                      <td>{participants.name}</td>
+                      <td>{participants.surname}</td>
+                      <td>{participants.email}</td>
+                      <td>{participants.phone}</td>
+                      <td>
+                        <StyledButton
+                          className="form-btn"
+                          onClick={() => handleDelete(participants.id)}
+                        >
+                          X
+                        </StyledButton>
+                      </td>
+                    </tr>
+                  </>
+                );
+              })}
+            </table>
+            {error && <Error>{error}</Error>}
+          </StyledForm>
+        </MainBox>
+      </LoginContainer>
     </>
   );
 };

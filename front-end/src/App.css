@@ -68,7 +68,7 @@ input {
 
 button {
   border: none;
-  background-color: white;
+  background-color: #fbb89f;
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
@@ -107,7 +107,7 @@ td {
 }
 table,
 th {
-  border: 1.5px solid #336cb6;
+  border: 1.5px solid #ded9d9;
   border-collapse: collapse;
 }
 

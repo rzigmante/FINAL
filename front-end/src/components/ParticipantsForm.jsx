@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {
+  MainBox,
+  StyledHeader,
+  LoginContainer,
+  StyledInput,
+  StyledButton,
+  StyledForm,
+  Error,
+} from "./styles/StyledLogin";
 
-export const ParticipantsForm = (props) => {
+export const ParticipantsForm = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,49 +34,52 @@ export const ParticipantsForm = (props) => {
   };
 
   return (
-    <div className="reg-form-container">
-      <h2>Naujas dalyvis</h2>
-      <form className="client_register-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">Vardas:</label>
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          type="name"
-          placeholder="Vardas"
-          id="name"
-          name="name"
-        />
-        <label htmlFor="surname">Pavardė:</label>
-        <input
-          value={surname}
-          onChange={(e) => setSurname(e.target.value)}
-          type="surname"
-          placeholder="Pavardė"
-          id="surname"
-          name="surname"
-        />
-        <label htmlFor="email">Elektroninis paštas:</label>
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          placeholder="Įrašykite el. pašto adresą"
-          id="email"
-          name="email"
-        />
-        <label htmlFor="phone">Telefono numeris:</label>
-        <input
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          type="phone"
-          placeholder="+370"
-          id="phone"
-          name="phone"
-        />
-        <button className="form-btn" type="submit">
-          Registruoti
-        </button>
-      </form>
-    </div>
+    <>
+      <LoginContainer>
+        <MainBox>
+          <StyledHeader>
+            <div className="reg-form-container">
+              <h2>Suveskite norinčio dalyvauti renginyje duomenis</h2>
+            </div>
+          </StyledHeader>
+          <StyledForm onSubmit={handleSubmit}>
+            <StyledInput
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              type="name"
+              placeholder="Vardas"
+              id="name"
+              name="name"
+            />
+            <StyledInput
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+              type="surname"
+              placeholder="Pavardė"
+              id="surname"
+              name="surname"
+            />
+            <StyledInput
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="Elektroninio pašto adresas"
+              id="email"
+              name="email"
+            />
+            <StyledInput
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              type="phone"
+              placeholder="Telefono numeris"
+              id="phone"
+              name="phone"
+            />
+            <StyledButton className="btn">Registruoti</StyledButton>
+            {error && <Error>{error}</Error>}
+          </StyledForm>
+        </MainBox>
+      </LoginContainer>
+    </>
   );
 };

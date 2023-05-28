@@ -1,33 +1,16 @@
-import React from "react";
-import background from "../components/assets/4391.jpg";
+import styled from "styled-components";
 
 export const HomePage = () => {
-  return (
-    <div
-      style={{
-        backgroundImage: `url(${background})`,
-        width: "100%",
-        height: "auto",
-      }}
-    >
-      <h2 style={{ color: "limegreen" }}>
-        Jūs esate finalinio projekto puslapyje
-      </h2>
-    </div>
-  );
-};
+  const StyledHomePage = styled.h2`
+    margin-top: 100px;
+    margin-left: 200px;
+  `;
 
-export const Homepage = () => {
   return (
-    <div
-      style={{
-        margin: "50px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        color: "darkgreen",
-        position: "relative",
-      }}
-    ></div>
+    <StyledHomePage>
+      Jūs esate mūsų organizuojamo renginio dalyvių registracijos puslapyje. Jei
+      norite registruoti dalyvius turite turėti savo pakyrą ir būti prie jos
+      prisijungę.
+    </StyledHomePage>
   );
 };
