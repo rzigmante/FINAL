@@ -26,6 +26,7 @@ function App() {
       <NavBar isLoading={isLoading} onLogout={handleLogout} />
       <Routes>
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route
