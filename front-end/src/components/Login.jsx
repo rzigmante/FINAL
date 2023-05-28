@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   MainBox,
   StyledHeader,
@@ -9,9 +9,9 @@ import {
   Error,
 } from "./styles/StyledLogin";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { AuthenticationContext } from "./AuthenticationContext";
 import axios from "axios";
+import "../App.css";
 
 export const Login = () => {
   const { setIsSignedIn } = useContext(AuthenticationContext);
