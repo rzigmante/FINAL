@@ -10,13 +10,13 @@ router.get("/participants", (req, res) => {
   });
 });
 
-router.post("/participants", (req, res) => {
+router.post("/forma", (req, res) => {
   const {
     body: { name, surname, email, phone },
   } = req;
 
   dbConnection.execute(
-    `INSERT INTO participant (name, surname, email, phone) VALUES (?, ?, ?, ?) `,
+    `INSERT INTO participants (name, surname, email, phone) VALUES (?, ?, ?, ?) `,
     [name, surname, email, phone],
     (err, result) => {
       defaultCallBack(err, result, res);
