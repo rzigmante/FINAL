@@ -1,7 +1,6 @@
 const express = require("express");
 const { dbConnection } = require("../db");
 const { defaultCallBack } = require("../utils/dbUtils");
-const { verifyToken } = require("../utils/authenticationUtils");
 
 const router = express.Router();
 
@@ -43,7 +42,7 @@ router.delete("/participants/:id", (req, res) => {
   const { id } = req.params;
 
   dbConnection.execute(
-    `DELETE FROM participant WHERE id=?`,
+    `DELETE FROM participants WHERE id=?`,
     [id],
     (err, result) => defaultCallBack(err, result, res)
   );

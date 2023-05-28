@@ -29,7 +29,7 @@ router.post("/login", (req, res) => {
 
   const incorrectCredentialsResponse = () =>
     res.json({
-      message: "Neteisingas el. paštas arba slaptažodils",
+      message: "Neteisingas el. paštas arba slaptažodis",
     });
 
   if (!email || !password) {
@@ -37,7 +37,7 @@ router.post("/login", (req, res) => {
     return;
   }
 
-  clientsDbConnection.execute(
+  dbConnection.execute(
     "SELECT * FROM user WHERE email=?",
     [email],
     (err, result) => {

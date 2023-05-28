@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const participantsRouter = require("./routes/participants");
-const userRouter = require("./routes/users");
+const usersRouter = require("./routes/users");
 const authenticationRouter = require("./routes/authentication");
 
 const app = express();
@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(participantsRouter);
-app.use(userRouter);
+app.use(usersRouter);
 app.use(authenticationRouter);
 
 app.listen(8000, () => {

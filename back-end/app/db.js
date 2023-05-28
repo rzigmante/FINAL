@@ -37,7 +37,7 @@ dbConnection.query(
 
       dbConnection.query(participantsTableQuery, function (err) {
         if (err) throw err;
-        console.log("Participants Table created");
+        console.log("Participants table created");
       });
 
       const usersTableQuery = `
