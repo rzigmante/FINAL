@@ -11,7 +11,6 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { AuthenticationContext } from "./AuthenticationContext";
 import axios from "axios";
-import "../App.css";
 
 export const Login = () => {
   const { setIsSignedIn } = useContext(AuthenticationContext);
@@ -19,9 +18,8 @@ export const Login = () => {
     email: "",
     password: "",
   });
-  const [error, setError] = useState(null);
-
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -73,7 +71,9 @@ export const Login = () => {
               type="slaptažodis"
               placeholder="*********"
             />
-            <StyledButton className="btn">PRISIJUNGTI</StyledButton>
+            <StyledButton className="btn" variant="primary" type="submit">
+              PRISIJUNGTI
+            </StyledButton>
 
             {error && <Error>{error}</Error>}
           </StyledForm>

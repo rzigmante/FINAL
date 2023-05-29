@@ -38,7 +38,7 @@ export const ParticipantsForm = () => {
       <LoginContainer>
         <MainBox>
           <StyledHeader>
-            <div className="reg-form-container">
+            <div>
               <h2>Suveskite norinčio dalyvauti renginyje duomenis</h2>
             </div>
           </StyledHeader>

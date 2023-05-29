@@ -54,7 +54,7 @@ dbConnection.query(
 
       dbConnection.query(usersTableQuery, function (err) {
         if (err) throw err;
-        console.log("Users Table created");
+        console.log("Users table created");
       });
     });
   }

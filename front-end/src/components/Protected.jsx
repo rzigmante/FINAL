@@ -3,7 +3,7 @@ import { Outlet, Navigate, useNavigate, useLocation } from "react-router-dom";
 import { AuthenticationContext } from "./AuthenticationContext";
 import axios from "axios";
 
-const Protected = ({ isLoading, setIsLoading }) => {
+export const Protected = () => {
   const { isSignedIn, setIsSignedIn } = useContext(AuthenticationContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,14 +20,13 @@ const Protected = ({ isLoading, setIsLoading }) => {
         if (response.data.id) {
           setIsSignedIn(true);
           navigate(location.pathname);
-          setIsLoading(false);
         }
       });
-  }, []);
+  }, [navigate, setIsSignedIn, location.pathname]);
 
-  if (isLoading) {
-    return <div>Page is loading</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Page is loading</div>;
+  // }
 
   if (!isSignedIn) {
     return <Navigate to="/login" />;
@@ -35,5 +34,3 @@ const Protected = ({ isLoading, setIsLoading }) => {
 
   return <Outlet />;
 };
-
-export default Protected;

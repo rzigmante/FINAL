@@ -5,7 +5,7 @@ import { NavBar } from "./components/NavBar";
 import { PageNotFound } from "./components/PageNotFound";
 import { ParticipantsForm } from "./components/ParticipantsForm";
 import { ParticipantsList } from "./components/ParticipantsList";
-import Protected from "./components/Protected";
+import { Protected } from "./components/Protected";
 import { Register } from "./components/Register";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import React, { useContext, useState } from "react";
@@ -33,9 +33,10 @@ function App() {
           element={
             <Protected isLoading={isLoading} setIsLoading={setIsLoading} />
           }
-        />
-        <Route path="/participants" element={<ParticipantsList />} />
-        <Route path="/form" element={<ParticipantsForm />} />
+        >
+          <Route path="/participants" element={<ParticipantsList />} />
+          <Route path="/form" element={<ParticipantsForm />} />
+        </Route>
       </Routes>
     </>
   );

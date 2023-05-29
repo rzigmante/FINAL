@@ -10,7 +10,7 @@ router.get("/participants", (req, res) => {
   });
 });
 
-router.post("/forma", (req, res) => {
+router.post("/participants", (req, res) => {
   const {
     body: { name, surname, email, phone },
   } = req;

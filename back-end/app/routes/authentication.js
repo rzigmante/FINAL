@@ -16,7 +16,7 @@ router.post("/register", (req, res) => {
   const hashedPassword = bcrypt.hashSync(password, 12);
 
   dbConnection.execute(
-    "INSERT INTO user (name, surname, email, password) VALUES (?, ?, ?, ?)",
+    "INSERT INTO users (name, surname, email, password) VALUES (?, ?, ?, ?)",
     [name, surname, email, hashedPassword],
     (err, result) => defaultCallBack(err, result, res)
   );
@@ -38,16 +38,16 @@ router.post("/login", (req, res) => {
   }
 
   dbConnection.execute(
-    "SELECT * FROM user WHERE email=?",
+    "SELECT * FROM users WHERE email=?",
     [email],
     (err, result) => {
       if (result.length === 0) {
         incorrectCredentialsResponse();
       } else {
-        const user = result[0];
-        const isPasswordCorrect = bcrypt.compareSync(password, user.password);
+        const users = result[0];
+        const isPasswordCorrect = bcrypt.compareSync(password, users.password);
 
-        const { id, email } = user;
+        const { id, email } = users;
 
         if (isPasswordCorrect) {
           const token = jwt.sign({ id, email }, process.env.JWT_SECRET);
@@ -64,7 +64,7 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/token/verify", verifyToken, (req, res) => {
-  res.json(res.locals.user);
+  res.json(res.locals.users);
 });
 
 module.exports = router;

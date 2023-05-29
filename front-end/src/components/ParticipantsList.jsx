@@ -10,7 +10,6 @@ import {
   StyledForm,
   Error,
 } from "./styles/StyledLogin";
-import { ParticipantsForm } from "./ParticipantsForm";
 
 export const ParticipantsList = () => {
   const [participants, setParticipants] = useState(null);
@@ -50,9 +49,7 @@ export const ParticipantsList = () => {
       <LoginContainer>
         <MainBox>
           <StyledHeader>
-            <h2 className="participants-list">
-              Dalyvaujančių renginyje sąrašas
-            </h2>
+            <h2>Dalyvaujančių renginyje sąrašas</h2>
           </StyledHeader>
           <StyledForm>
             <table>
@@ -74,7 +71,6 @@ export const ParticipantsList = () => {
                       <td>{participants.phone}</td>
                       <td>
                         <StyledButton
-                          className="form-btn"
                           onClick={() => handleDelete(participants.id)}
                         >
                           X
