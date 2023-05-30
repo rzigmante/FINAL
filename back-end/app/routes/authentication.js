@@ -23,9 +23,8 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  const {
-    body: { email, password },
-  } = req;
+  const { body } = req;
+  const { email, password } = body;
 
   const incorrectCredentialsResponse = () =>
     res.json({
@@ -44,10 +43,10 @@ router.post("/login", (req, res) => {
       if (result.length === 0) {
         incorrectCredentialsResponse();
       } else {
-        const users = result[0];
-        const isPasswordCorrect = bcrypt.compareSync(password, users.password);
+        const user = result[0];
+        const isPasswordCorrect = bcrypt.compareSync(password, user.password);
 
-        const { id, email } = users;
+        const { id, email } = user;
 
         if (isPasswordCorrect) {
           const token = jwt.sign({ id, email }, process.env.JWT_SECRET);
