@@ -29,7 +29,7 @@ export const ParticipantsForm = () => {
 
     axios
       .post("http://localhost:8000/participants", body)
-      .then((response) => console.log("seccessful response", response))
+      .then((response) => console.log("successful response", response))
       .catch((err) => console.log("err", err));
   };
 
@@ -75,7 +75,7 @@ export const ParticipantsForm = () => {
               id="phone"
               name="phone"
             />
-            <StyledButton className="btn">Registruoti</StyledButton>
+            <StyledButton type="submit">Registruoti</StyledButton>
             {error && <Error>{error}</Error>}
           </StyledForm>
         </MainBox>

@@ -27,10 +27,16 @@ export const NavBar = ({ isLoading, onLogout }) => {
         ) : (
           <>
             <li>
+              <Link to="/register">Užsiregistruokite</Link>
+            </li>
+            <li>
               <Link to="/login">Prisijunkite</Link>
             </li>
             <li>
-              <Link to="/register">Užsiregistruokite</Link>
+              <Link to="/form">Dalyvių registravimo forma</Link>
+            </li>
+            <li>
+              <Link to="/participants">Dalyvių sąrašas</Link>
             </li>
           </>
         )}

@@ -14,12 +14,20 @@ import axios from "axios";
 
 export const Login = () => {
   const { setIsSignedIn } = useContext(AuthenticationContext);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const navigate = useNavigate();
-  const [error, setError] = useState(null);
+
+  const handleOnChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -30,19 +38,12 @@ export const Login = () => {
         if (response.data.token) {
           localStorage.setItem("token", response.data.token);
           setIsSignedIn(true);
-          navigate("/");
+          navigate("/form");
         } else {
           setError(response.data.message);
         }
       })
       .catch((err) => console.log(err));
-  };
-
-  const handleOnChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
   };
 
   return (

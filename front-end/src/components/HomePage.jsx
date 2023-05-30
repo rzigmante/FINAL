@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import image from "./assets/gathering-picture.jpg";
 
 export const HomePage = () => {
   const StyledHomePage = styled.h2`
@@ -9,7 +10,7 @@ export const HomePage = () => {
   return (
     <StyledHomePage>
       Jūs esate mūsų organizuojamo renginio dalyvių registracijos puslapyje. Jei
-      norite registruoti dalyvius turite turėti savo pakyrą ir būti prie jos
+      norite registruoti dalyvius turite turėti savo paskyrą ir būti prie jos
       prisijungę.
     </StyledHomePage>
   );

@@ -29,6 +29,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/participants" element={<ParticipantsList />} />
+        <Route path="/form" element={<ParticipantsForm />} />
         <Route
           element={
             <Protected isLoading={isLoading} setIsLoading={setIsLoading} />

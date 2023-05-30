@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
@@ -15,7 +15,16 @@ export const ParticipantsList = () => {
   const [participants, setParticipants] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/participants")
+      .then((response) => {
+        setParticipants(response.data);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleDelete = (id) => {
     console.log("id", id);
@@ -29,16 +38,6 @@ export const ParticipantsList = () => {
         console.log(error);
       });
   };
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/participants")
-      .then((response) => {
-        setParticipants(response.data);
-        setIsLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -60,18 +59,18 @@ export const ParticipantsList = () => {
                 <th>Telefono nr.</th>
                 <th>Ištrinti</th>
               </tr>
-              {participants.map((participants) => {
-                console.log("post", participants);
+              {participants.map((participant) => {
+                console.log("post", participant);
                 return (
                   <>
                     <tr>
-                      <td>{participants.name}</td>
-                      <td>{participants.surname}</td>
-                      <td>{participants.email}</td>
-                      <td>{participants.phone}</td>
+                      <td>{participant.name}</td>
+                      <td>{participant.surname}</td>
+                      <td>{participant.email}</td>
+                      <td>{participant.phone}</td>
                       <td>
                         <StyledButton
-                          onClick={() => handleDelete(participants.id)}
+                          onClick={() => handleDelete(participant.id)}
                         >
                           X
                         </StyledButton>
@@ -81,7 +80,7 @@ export const ParticipantsList = () => {
                 );
               })}
             </table>
-            {error && <Error>{error}</Error>}
+            {Error && <Error>{Error}</Error>}
           </StyledForm>
         </MainBox>
       </LoginContainer>
